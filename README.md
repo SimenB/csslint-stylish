@@ -1,11 +1,13 @@
 # csslint-stylish
 > Stylish formatter for CSSLint
 
+[![NPM version][npm-image]][npm-url] [![Build status][travis-image]][travis-url] [![Dependency status][david-image]][david-url]
+
 ## Usage
 
 ### CSSLint Node.js API
 
-To use it with the `csslint` api, you will have to call `csslint` as well as assemble the report, manually.
+To use it with the `csslint` api, you will have to call `csslint`, as well as assemble the report, manually.
 
 ```js
 var csslint = require('csslint');
@@ -33,7 +35,7 @@ See <https://github.com/lazd/gulp-csslint/pull/21>
 ### `grunt-contrib-csslint`
 It's currently not possible to use a custom formatter with the grunt-plugin.
 
-I have no PR there (yet). Feel free to create one!
+See <https://github.com/gruntjs/grunt-contrib-csslint/pull/59>
 
 ## API
 
@@ -62,3 +64,11 @@ Type: `Boolean`
 Default: `false`
 
 If `true`, will print the absolute path of the file linted, instead of the relative.
+
+
+[travis-url]: https://travis-ci.org/SimenB/csslint-stylish
+[travis-image]: https://img.shields.io/travis/SimenB/csslint-stylish.svg
+[npm-url]: https://npmjs.org/package/csslint-stylish
+[npm-image]: https://img.shields.io/npm/v/csslint-stylish.svg
+[david-url]: https://david-dm.org/SimenB/csslint-stylish
+[david-image]: https://img.shields.io/david/SimenB/csslint-stylish.svg
