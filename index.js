@@ -1,11 +1,11 @@
-'use strict';
+'use strict'
 
-var path = require('path');
+var path = require('path')
 
-var chalk = require('chalk');
-var table = require('text-table');
-var logSymbols = require('log-symbols');
-var pluralize = require('pluralize');
+var chalk = require('chalk')
+var table = require('text-table')
+var logSymbols = require('log-symbols')
+var pluralize = require('pluralize')
 
 module.exports = {
   id: 'stylish',
@@ -15,75 +15,75 @@ module.exports = {
   totalWarnings: 0,
 
   startFormat: function () {
-    this.totalErrors = 0;
-    this.totalWarnings = 0;
+    this.totalErrors = 0
+    this.totalWarnings = 0
 
-    return '';
+    return ''
   },
 
   endFormat: function () {
-    var totalViolations = this.totalErrors + this.totalWarnings,
-      output = '\n';
+    var totalViolations = this.totalErrors + this.totalWarnings
+    var output = '\n'
 
     if (totalViolations === 0) {
-      output += 'No violations';
+      output += 'No violations'
     }
 
     if (this.totalErrors > 0) {
-      output += '    ' + logSymbols.error + '  ' + pluralize('error', this.totalErrors, true) + '\n';
+      output += '    ' + logSymbols.error + '  ' + pluralize('error', this.totalErrors, true) + '\n'
     }
 
     if (this.totalWarnings > 0) {
-      output += '    ' + logSymbols.warning + '  ' + pluralize('warning', this.totalWarnings, true) + '\n';
+      output += '    ' + logSymbols.warning + '  ' + pluralize('warning', this.totalWarnings, true) + '\n'
     }
 
-    return output;
+    return output
   },
 
   formatResults: function (results, filename, options) {
-    var messages = results.messages,
-      output = [],
-      self = this,
-      usableOptions = options || {};
+    var messages = results.messages
+    var output = []
+    var self = this
+    var usableOptions = options || {}
 
     if (messages.length > 0) {
       if (filename) {
         if (usableOptions.absoluteFilePathsForFormatters) {
-          output.push([ chalk.underline(filename) + '\n' ]);
+          output.push([ chalk.underline(filename) + '\n' ])
         } else {
-          var relateFilename = path.relative(process.cwd(), filename);
+          var relateFilename = path.relative(process.cwd(), filename)
 
-          output.push([ chalk.underline(relateFilename) + '\n' ]);
+          output.push([ chalk.underline(relateFilename) + '\n' ])
         }
       }
 
       messages.forEach(function (message) {
-        var line = [ '' ];
-        var isWarning = message.type === 'warning';
+        var line = [ '' ]
+        var isWarning = message.type === 'warning'
 
         if (isWarning) {
-          self.totalWarnings++;
+          self.totalWarnings++
         } else {
-          self.totalErrors++;
+          self.totalErrors++
         }
 
         if (message.rollup) {
-          line.push('');
-          line.push('');
+          line.push('')
+          line.push('')
         } else {
-          line.push(chalk.gray('line ' + message.line));
-          line.push(chalk.gray('char ' + message.col));
+          line.push(chalk.gray('line ' + message.line))
+          line.push(chalk.gray('char ' + message.col))
         }
 
         line.push(isWarning ? (process.platform === 'win32' ? chalk.cyan(message.message) :
-          chalk.blue(message.message)) : chalk.red(message.message));
+          chalk.blue(message.message)) : chalk.red(message.message))
 
-        output.push(line);
-      });
+        output.push(line)
+      })
 
-      output.push([ '\n\n' ]);
+      output.push([ '\n\n' ])
     }
 
-    return table(output);
+    return table(output)
   }
-};
+}

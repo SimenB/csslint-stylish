@@ -7,16 +7,15 @@
     "url": "https://github.com/SimenB/csslint-stylish/issues"
   },
   "dependencies": {
-    "chalk": "^1.0.0",
+    "chalk": "^1.1.0",
     "log-symbols": "^1.0.2",
     "pluralize": "^1.1.2",
     "text-table": "^0.2.0"
   },
   "devDependencies": {
     "csslint": "^0.10.0",
-    "jscs": "^1.13.0",
-    "jshint": "^2.7.0",
-    "mocha": "^2.2.4"
+    "mocha": "^2.2.5",
+    "standard": "^4.5.4"
   },
   "files": [
     "index.js"
@@ -31,12 +30,9 @@
   ],
   "license": "MIT",
   "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SimenB/csslint-stylish.git"
-  },
+  "repository": "SimenB/csslint-stylish",
   "scripts": {
-    "pretest": "jshint index.js test.js && jscs index.js test.js",
+    "pretest": "standard",
     "test": "mocha"
   }
 }

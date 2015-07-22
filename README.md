@@ -33,9 +33,9 @@ It's currently not possible to use a custom formatter with the gulp-plugin.
 See <https://github.com/lazd/gulp-csslint/pull/21>
 
 ### `grunt-contrib-csslint`
-It's currently not possible to use a custom formatter with the grunt-plugin.
+Starting with version `0.5.0`, it's possible to use custom formatters with `grunt`.
 
-See <https://github.com/gruntjs/grunt-contrib-csslint/pull/59>
+See the [example](https://github.com/gruntjs/grunt-contrib-csslint#providing-a-custom-formatter) in their repo
 
 ## API
 
