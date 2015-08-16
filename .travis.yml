@@ -2,5 +2,9 @@ sudo: false
 language: node_js
 node_js:
   - iojs
-  - 0.12
+  - iojs-2
+  - iojs-1
+  - node
   - '0.10'
+script: npm run cover
+after_success: cat coverage/lcov.info | node_modules/.bin/coveralls --verbose

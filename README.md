@@ -2,8 +2,10 @@
 > Stylish formatter for CSSLint
 
 [![NPM version][npm-image]][npm-url]
-[![Linux Build status][travis-image]][travis-url]
-[![Windows Build status][appveyor-image]][appveyor-url]
+[![Linux Build Status][travis-image]][travis-url]
+[![Windows Build Status][appveyor-image]][appveyor-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
+
 [![Dependency status][david-image]][david-url]
 
 ## Usage
@@ -73,6 +75,8 @@ If `true`, will print the absolute path of the file linted, instead of the relat
 [travis-image]: https://img.shields.io/travis/SimenB/csslint-stylish.svg
 [appveyor-url]: https://ci.appveyor.com/project/SimenB/csslint-stylish
 [appveyor-image]: https://ci.appveyor.com/api/projects/status/92exg416gkm4al9r?svg=true
+[coveralls-url]: https://coveralls.io/github/SimenB/csslint-stylish
+[coveralls-image]: https://img.shields.io/coveralls/SimenB/csslint-stylish.svg
 [npm-url]: https://npmjs.org/package/csslint-stylish
 [npm-image]: https://img.shields.io/npm/v/csslint-stylish.svg
 [david-url]: https://david-dm.org/SimenB/csslint-stylish

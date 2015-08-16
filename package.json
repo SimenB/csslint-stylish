@@ -14,8 +14,11 @@
   },
   "devDependencies": {
     "babel": "^5.8.3",
+    "babel-istanbul": "^0.3.17",
+    "coveralls": "^2.11.4",
     "csslint": "^0.10.0",
     "mocha": "^2.2.5",
+    "rimraf": "^2.4.2",
     "standard": "^4.5.4"
   },
   "files": [
@@ -33,8 +36,13 @@
   "main": "index.js",
   "repository": "SimenB/csslint-stylish",
   "scripts": {
+    "clean": "rimraf coverage/ test-es5.js",
     "compile": "babel stylish.js -o index.js",
+    "compile-test": "babel test.js -o test-es5.js",
+    "cover": "babel-istanbul cover -x test-es5.js _mocha test-es5",
     "lint": "standard",
+    "precover": "npm run lint && npm run compile-test",
+    "prelint": "npm run clean",
     "prepublish": "npm run compile",
     "pretest": "npm run lint",
     "test": "mocha --compilers js:babel/register"
