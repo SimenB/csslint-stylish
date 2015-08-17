@@ -8,6 +8,13 @@
 
 [![Dependency status][david-image]][david-url]
 
+## Screenshots
+![This reporter][new-image]
+
+vs original:
+
+![Original reporter][orig-image]
+
 ## Usage
 
 ### CSSLint Node.js API
@@ -81,3 +88,5 @@ If `true`, will print the absolute path of the file linted, instead of the relat
 [npm-image]: https://img.shields.io/npm/v/csslint-stylish.svg
 [david-url]: https://david-dm.org/SimenB/csslint-stylish
 [david-image]: https://img.shields.io/david/SimenB/csslint-stylish.svg
+[new-image]: screenshots/this.png
+[orig-image]: screenshots/original.png
