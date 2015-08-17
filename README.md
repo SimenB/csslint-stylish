@@ -35,7 +35,7 @@ I have a PR with `csslint` that would make it possible. See <https://github.com/
 ### `gulp-csslint`
 It's currently not possible to use a custom formatter with the gulp-plugin.
 
-See <https://github.com/lazd/gulp-csslint/pull/21>
+See <https://github.com/lazd/gulp-csslint/pull/29>
 
 ### `grunt-contrib-csslint`
 Starting with version `0.5.0`, it's possible to use custom formatters with `grunt`.

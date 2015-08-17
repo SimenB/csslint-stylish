@@ -16,7 +16,7 @@ describe('csslint-stylish', () => {
 
     report = chalk.stripColor(report)
 
-    const filename = report.split('\n')[0]
+    const filename = report.split('\n')[1]
 
     assert(filename === 'style.css', 'filename is correct')
     assert(report.match(/line 2/), 'report contains text')
@@ -33,7 +33,7 @@ describe('csslint-stylish', () => {
 
     report = chalk.stripColor(report)
 
-    const filename = report.split('\n')[0]
+    const filename = report.split('\n')[1]
 
     assert(filename === path.join(__dirname, 'style.css'), 'filename is correct')
     assert(report.match(/char 3/), 'report contains text')

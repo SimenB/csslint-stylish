@@ -21,10 +21,10 @@ export default {
 
   endFormat: function () {
     const totalViolations = this.totalErrors + this.totalWarnings
-    let output = '\n'
+    let output = '\n\n'
 
     if (totalViolations === 0) {
-      output += 'No violations'
+      return '\nNo violations'
     }
 
     if (this.totalErrors > 0) {
@@ -41,16 +41,17 @@ export default {
   formatResults: function (results, filename, options) {
     const {messages} = results
     let output = []
+    let underlinedFilename
     const {absoluteFilePathsForFormatters} = (options || {})
 
     if (messages.length > 0) {
       if (filename) {
         if (absoluteFilePathsForFormatters) {
-          output.push([chalk.underline(filename) + '\n'])
+          underlinedFilename = chalk.underline(filename)
         } else {
           const relateFilename = path.relative(process.cwd(), filename)
 
-          output.push([chalk.underline(relateFilename) + '\n'])
+          underlinedFilename = chalk.underline(relateFilename)
         }
       }
 
@@ -73,16 +74,12 @@ export default {
           formatted.push(chalk.gray(`char ${col}`))
         }
 
-        formatted.push(isWarning ?
-          (process.platform === 'win32' ? chalk.cyan(message) : chalk.blue(message)) :
-          chalk.red(message))
+        formatted.push(isWarning ? chalk.blue(message) : chalk.red(message))
 
         output.push(formatted)
       })
-
-      output.push(['\n\n'])
     }
 
-    return table(output)
+    return `\n${underlinedFilename}\n${table(output)}`
   }
 }
