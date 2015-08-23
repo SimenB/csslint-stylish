@@ -36,7 +36,7 @@
   "main": "index.js",
   "repository": "SimenB/csslint-stylish",
   "scripts": {
-    "clean": "rimraf coverage/ test-es5.js",
+    "clean": "rimraf coverage/ index.js test-es5.js",
     "compile": "babel stylish.js -o index.js",
     "compile-test": "babel test.js -o test-es5.js",
     "cover": "babel-istanbul cover -x test-es5.js _mocha test-es5",

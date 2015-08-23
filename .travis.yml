@@ -6,5 +6,10 @@ node_js:
   - iojs-1
   - node
   - '0.10'
+addons:
+  code_climate:
+    repo_token: 949195dc3763437061a310f7966070b6d9598b47ab437eb0eb180cbce5bcc15a
 script: npm run cover
-after_success: cat coverage/lcov.info | node_modules/.bin/coveralls --verbose
+after_success:
+  - cat coverage/lcov.info | node_modules/.bin/coveralls --verbose
+  - codeclimate-test-reporter < coverage/lcov.info

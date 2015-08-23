@@ -5,8 +5,10 @@
 [![Linux Build Status][travis-image]][travis-url]
 [![Windows Build Status][appveyor-image]][appveyor-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
+[![Codeclimate Status][codeclimate-image]][codeclimate-url]
 
 [![Dependency status][david-image]][david-url]
+[![Dev Dependency Status][david-dev-image]][david-dev-url]
 
 ## Screenshots
 ![This reporter][new-image]
@@ -84,9 +86,13 @@ If `true`, will print the absolute path of the file linted, instead of the relat
 [appveyor-image]: https://ci.appveyor.com/api/projects/status/92exg416gkm4al9r?svg=true
 [coveralls-url]: https://coveralls.io/github/SimenB/csslint-stylish
 [coveralls-image]: https://img.shields.io/coveralls/SimenB/csslint-stylish.svg
+[codeclimate-url]: https://codeclimate.com/github/SimenB/csslint-stylish
+[codeclimate-image]: https://img.shields.io/codeclimate/github/SimenB/csslint-stylish.svg
 [npm-url]: https://npmjs.org/package/csslint-stylish
 [npm-image]: https://img.shields.io/npm/v/csslint-stylish.svg
 [david-url]: https://david-dm.org/SimenB/csslint-stylish
 [david-image]: https://img.shields.io/david/SimenB/csslint-stylish.svg
+[david-dev-url]: https://david-dm.org/SimenB/csslint-stylish#info=devDependencie
+[david-dev-image]: https://img.shields.io/david/dev/SimenB/csslint-stylish.svg
 [new-image]: screenshots/this.png
 [orig-image]: screenshots/original.png
