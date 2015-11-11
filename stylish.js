@@ -80,6 +80,9 @@ export default {
       })
     }
 
-    return `\n${underlinedFilename}\n${table(output)}`
+    if (underlinedFilename) {
+      return `\n${underlinedFilename}\n${table(output)}`
+    }
+    return `\n${table(output)}`
   }
 }
