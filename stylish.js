@@ -41,7 +41,7 @@ export default {
   formatResults: function (results, filename, options) {
     const {messages} = results
     let output = []
-    let underlinedFilename
+    let underlinedFilename = ''
     const {absoluteFilePathsForFormatters} = (options || {})
 
     if (messages.length > 0) {
@@ -80,6 +80,9 @@ export default {
       })
     }
 
-    return `\n${underlinedFilename}\n${table(output)}`
+    if (underlinedFilename) {
+      return `\n${underlinedFilename}\n${table(output)}`
+    }
+    return `\n${table(output)}`
   }
 }

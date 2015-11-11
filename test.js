@@ -48,4 +48,18 @@ describe('csslint-stylish', () => {
 
     assert(CSSLint.hasFormat('stylish'), 'csslint should be stylish')
   })
+
+  it('should not report undefined output lines when no filename provided', () => {
+
+    const res = CSSLint.verify('.class {\n  color: red\n}\n')
+
+    let report = reporter.startFormat() + reporter.formatResults(res, path.resolve('style.css')) + reporter.endFormat()
+
+    report = chalk.stripColor(report)
+
+    let matches = report.match(/^undefined$/gm)
+
+    assert(matches === null, 'report should not contains undefined text output')
+  })
+
 })
