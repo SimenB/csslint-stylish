@@ -6,7 +6,9 @@ node_js:
   - iojs-1
   - iojs-2
   - iojs-3
+  - 4
   - node
+before_install: npm install -g npm
 addons:
   code_climate:
     repo_token: 949195dc3763437061a310f7966070b6d9598b47ab437eb0eb180cbce5bcc15a
