@@ -15,11 +15,13 @@
   "devDependencies": {
     "babel": "^6.1.18",
     "babel-cli": "^6.1.18",
+    "babel-core": "^6.1.21",
     "babel-istanbul": "^0.5.8",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-stage-2": "^6.1.18",
     "coveralls": "^2.11.4",
     "csslint": "^0.10.0",
+    "in-publish": "^2.0.0",
     "mocha": "^2.3.3",
     "rimraf": "^2.4.3",
     "standard": "^5.3.1"
@@ -46,8 +48,8 @@
     "lint": "standard",
     "precover": "npm run lint && npm run compile-test",
     "prelint": "npm run clean",
-    "prepublish": "npm run compile",
+    "prepublish": "not-in-install && npm run compile || echo this is npm install",
     "pretest": "npm run lint",
-    "test": "mocha --compilers js:babel/register"
+    "test": "mocha --compilers js:babel-core/register"
   }
 }
