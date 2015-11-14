@@ -1,7 +1,7 @@
 {
   "name": "csslint-stylish",
   "description": "A stylish reporter for CSSLint, heavily inspired by jshint-stylish",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Simen Bekkhus <sbekkhus91@gmail.com>",
   "bugs": {
     "url": "https://github.com/SimenB/csslint-stylish/issues"
