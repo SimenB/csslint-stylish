@@ -48,4 +48,31 @@ describe('csslint-stylish', () => {
 
     assert(CSSLint.hasFormat('stylish'), 'csslint should be stylish')
   })
+
+  it('should not report undefined output lines when no filename provided', () => {
+    const res = CSSLint.verify('.class {\n  color: red !important\n}\n')
+
+    let report = reporter.startFormat() + reporter.formatResults(res) + reporter.endFormat()
+
+    report = chalk.stripColor(report)
+
+    let matches = report.match(/^undefined$/gm)
+
+    assert(matches === null, 'report should not contains undefined text output')
+  })
+
+  it('should report filename provided', () => {
+    const res = CSSLint.verify('.class {\n  color: red !important\n}\n')
+    const filename = path.resolve('filenamestyle.css')
+    let report = reporter.startFormat() + reporter.formatResults(res, filename,
+        { absoluteFilePathsForFormatters: true }) + reporter.endFormat()
+
+    report = chalk.stripColor(report)
+
+    const matches = report.match(/^undefined$/gm)
+    const outfilename = report.split('\n')[1]
+
+    assert(matches === null, 'report should not contains undefined text output')
+    assert(outfilename === filename, 'filename should be in output lines')
+  })
 })
