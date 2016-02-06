@@ -55,7 +55,7 @@ export default {
         }
       }
 
-      messages.forEach(origMessage => {
+      messages.forEach((origMessage) => {
         const { message, rollup, line, col, type } = origMessage
         const formatted = ['']
         const isWarning = type === 'warning'
