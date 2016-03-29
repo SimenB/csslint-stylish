@@ -7,6 +7,7 @@
 [![Coverage Status][coveralls-image]][coveralls-url]
 [![Codeclimate Status][codeclimate-image]][codeclimate-url]
 
+[![bitHound Dependencies][bithound-image]][bithound-url]
 [![Dependency status][david-image]][david-url]
 [![Dev Dependency Status][david-dev-image]][david-dev-url]
 
@@ -90,6 +91,8 @@ If `true`, will print the absolute path of the file linted, instead of the relat
 [codeclimate-image]: https://img.shields.io/codeclimate/github/SimenB/csslint-stylish.svg
 [npm-url]: https://npmjs.org/package/csslint-stylish
 [npm-image]: https://img.shields.io/npm/v/csslint-stylish.svg
+[bithound-url]: https://www.bithound.io/github/SimenB/csslint-stylish/master/dependencies/npm
+[bithound-image]: https://www.bithound.io/github/SimenB/csslint-stylish/badges/dependencies.svg
 [david-url]: https://david-dm.org/SimenB/csslint-stylish
 [david-image]: https://img.shields.io/david/SimenB/csslint-stylish.svg
 [david-dev-url]: https://david-dm.org/SimenB/csslint-stylish#info=devDependencie
