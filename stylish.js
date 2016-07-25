@@ -38,11 +38,10 @@ export default {
     return output;
   },
 
-  formatResults(results, filename, options) {
+  formatResults(results, filename, { absoluteFilePathsForFormatters } = {}) {
     const { messages } = results;
     const output = [];
     let underlinedFilename;
-    const { absoluteFilePathsForFormatters } = (options || {});
 
     if (messages.length > 0) {
       if (filename) {
