@@ -26,6 +26,7 @@
     "eslint-plugin-import": "^1.11.1",
     "in-publish": "^2.0.0",
     "mocha": "^2.4.5",
+    "node-version-check": "^2.0.2",
     "rimraf": "^2.5.1"
   },
   "files": [
@@ -47,7 +48,7 @@
     "compile": "babel stylish.js -o index.js",
     "compile-test": "babel test.js -o test-es5.js",
     "cover": "babel-istanbul cover -x test-es5.js _mocha test-es5",
-    "lint": "eslint .",
+    "lint": "node-version-gte-4 && eslint . || node-version-lt-4",
     "precover": "npm run lint && npm run compile-test",
     "prelint": "npm run clean",
     "prepublish": "not-in-install && npm run compile || echo this is npm install",
