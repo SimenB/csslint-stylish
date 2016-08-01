@@ -1,79 +1,73 @@
-/* eslint-env mocha */
 /* eslint import/no-extraneous-dependencies: ["error", { "devDependencies": true }] */
 
+import test from 'ava';
 import { CSSLint } from 'csslint';
 import chalk from 'chalk';
 
 import path from 'path';
-import assert from 'assert';
 
 import reporter from './stylish';
 
-describe('csslint-stylish', () => {
-  it('should report stuff', () => {
-    const res = CSSLint.verify('.class {\n  color: red !important\n}\n');
+test('should report stuff', t => {
+  const res = CSSLint.verify('.class {\n  color: red !important\n}\n');
 
-    let report = reporter.startFormat() + reporter.formatResults(res, path.resolve('style.css')) + reporter.endFormat();
+  let report = reporter.startFormat() + reporter.formatResults(res, path.resolve('style.css')) + reporter.endFormat();
 
-    report = chalk.stripColor(report);
+  report = chalk.stripColor(report);
 
-    const filename = report.split('\n')[1];
+  const filename = report.split('\n')[1];
 
-    assert(filename === 'style.css', 'filename is correct');
-    assert(report.match(/line 2/), 'report contains text');
-    assert(report.match(/char 3/), 'report contains text');
-    assert(report.match(/Use of !important/), 'report contains text');
-    assert(report.match(/1 warning/), 'report contains text');
-  });
+  t.true(filename === 'style.css', 'filename is correct');
+  t.regex(report, /line 2/, 'report contains text');
+  t.regex(report, /char 3/, 'report contains text');
+  t.regex(report, /Use of !important/, 'report contains text');
+  t.regex(report, /1 warning/, 'report contains text');
+});
 
-  it('should report with full path', () => {
-    const res = CSSLint.verify('.class {\n  color: red !important\n}\n');
+test('should report with full path', t => {
+  const res = CSSLint.verify('.class {\n  color: red !important\n}\n');
 
-    let report = reporter.startFormat() + reporter.formatResults(res, path.resolve('style.css'),
-        { absoluteFilePathsForFormatters: true }) + reporter.endFormat();
+  let report = reporter.startFormat() + reporter.formatResults(res, path.resolve('style.css'),
+      { absoluteFilePathsForFormatters: true }) + reporter.endFormat();
 
-    report = chalk.stripColor(report);
+  report = chalk.stripColor(report);
 
-    const filename = report.split('\n')[1];
+  const filename = report.split('\n')[1];
 
-    assert(filename === path.join(__dirname, 'style.css'), 'filename is correct');
-    assert(report.match(/char 3/), 'report contains text');
-    assert(report.match(/Use of !important/), 'report contains text');
-    assert(report.match(/1 warning/), 'report contains text');
-  });
+  t.true(filename === path.join(__dirname, 'style.css'), 'filename is correct');
+  t.regex(report, /char 3/, 'report contains text');
+  t.regex(report, /Use of !important/, 'report contains text');
+  t.regex(report, /1 warning/, 'report contains text');
+});
 
-  it('should be able to be registered as formatter', () => {
-    assert(!CSSLint.hasFormat('stylish'), 'csslint should not be stylish');
+test('should be able to be registered as formatter', t => {
+  t.false(CSSLint.hasFormat('stylish'), 'csslint should not be stylish');
 
-    CSSLint.addFormatter(reporter);
+  CSSLint.addFormatter(reporter);
 
-    assert(CSSLint.hasFormat('stylish'), 'csslint should be stylish');
-  });
+  t.true(CSSLint.hasFormat('stylish'), 'csslint should be stylish');
+});
 
-  it('should not report undefined output lines when no filename provided', () => {
-    const res = CSSLint.verify('.class {\n  color: red !important\n}\n');
+test('should not report undefined output lines when no filename provided', t => {
+  const res = CSSLint.verify('.class {\n  color: red !important\n}\n');
 
-    let report = reporter.startFormat() + reporter.formatResults(res) + reporter.endFormat();
+  let report = reporter.startFormat() + reporter.formatResults(res) + reporter.endFormat();
 
-    report = chalk.stripColor(report);
+  report = chalk.stripColor(report);
 
-    const matches = report.match(/^undefined$/gm);
+  t.false(/^undefined$/gm.test(report), 'report should not contains undefined text output');
+  // t.notRegex(report, /^undefined$/gm, 'report should not contains undefined text output');
+});
 
-    assert(matches === null, 'report should not contains undefined text output');
-  });
+test('should report filename provided', t => {
+  const res = CSSLint.verify('.class {\n  color: red !important\n}\n');
+  const filename = path.resolve('filenamestyle.css');
+  let report = reporter.startFormat() + reporter.formatResults(res, filename, { absoluteFilePathsForFormatters: true }) +
+    reporter.endFormat();
 
-  it('should report filename provided', () => {
-    const res = CSSLint.verify('.class {\n  color: red !important\n}\n');
-    const filename = path.resolve('filenamestyle.css');
-    let report = reporter.startFormat() + reporter.formatResults(res, filename,
-        { absoluteFilePathsForFormatters: true }) + reporter.endFormat();
+  report = chalk.stripColor(report);
 
-    report = chalk.stripColor(report);
-
-    const matches = report.match(/^undefined$/gm);
-    const outfilename = report.split('\n')[1];
-
-    assert(matches === null, 'report should not contains undefined text output');
-    assert(outfilename === filename, 'filename should be in output lines');
-  });
+  // t.notRegex(report, /^undefined$/gm, 'report should not contains undefined text output');
+  t.false(/^undefined$/gm.test(report), 'report should not contains undefined text output');
+  t.true(report.split('\n')[1] === filename, 'filename should be in output lines');
 });

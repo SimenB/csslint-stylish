@@ -13,19 +13,20 @@
     "text-table": "^0.2.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.4.5",
-    "babel-istanbul": "^0.11.0",
-    "babel-plugin-add-module-exports": "^0.2.0",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-register": "^6.4.3",
-    "coveralls": "^2.11.6",
+    "ava": "^0.15.2",
+    "babel-cli": "^6.11.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-register": "^6.11.6",
+    "coveralls": "^2.11.12",
     "csslint": "^1.0.2",
-    "eslint": "^3.1.1",
+    "eslint": "^3.2.0",
+    "eslint-config-simenb-ava": "^1.1.1",
     "eslint-config-simenb-base": "^2.0.0",
     "in-publish": "^2.0.0",
-    "mocha": "^3.0.0",
-    "node-version-check": "^2.0.2",
-    "rimraf": "^2.5.1"
+    "node-version-check": "^2.1.0",
+    "nyc": "^7.1.0",
+    "rimraf": "^2.5.4"
   },
   "files": [
     "index.js"
@@ -42,15 +43,20 @@
   "main": "index.js",
   "repository": "SimenB/csslint-stylish",
   "scripts": {
-    "clean": "rimraf coverage/ index.js test-es5.js",
+    "clean": "rimraf coverage/ .nyc_output/ index.js",
     "compile": "babel stylish.js -o index.js",
-    "compile-test": "babel test.js -o test-es5.js",
-    "cover": "babel-istanbul cover -x test-es5.js _mocha test-es5",
+    "cover": "nyc ava",
     "lint": "node-version-gte-4 && eslint . || node-version-lt-4",
-    "precover": "npm run lint && npm run compile-test",
-    "prelint": "npm run clean",
+    "precover": "npm run lint && npm run clean",
+    "postcover": "nyc report -r html -r lcov",
     "prepublish": "not-in-install && npm run compile || echo this is npm install",
+    "postpublish": "git push --follow-tags",
     "pretest": "npm run lint",
-    "test": "mocha --compilers js:babel-register"
+    "test": "ava"
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ]
   }
 }
