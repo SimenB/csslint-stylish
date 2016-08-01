@@ -38,9 +38,8 @@ export default {
     return output;
   },
 
-  formatResults(results, filename, { absoluteFilePathsForFormatters } = {}) {
-    const { messages } = results;
-    const output = [];
+  formatResults({ messages }, filename, { absoluteFilePathsForFormatters } = {}) {
+    let output = [];
     let underlinedFilename;
 
     if (messages.length > 0) {
@@ -54,8 +53,7 @@ export default {
         }
       }
 
-      messages.forEach(origMessage => {
-        const { message, rollup, line, col, type } = origMessage;
+      output = messages.map(({ message, rollup, line, col, type }) => {
         const formatted = [''];
         const isWarning = type === 'warning';
 
@@ -75,7 +73,7 @@ export default {
 
         formatted.push(isWarning ? chalk.blue(message) : chalk.red(message));
 
-        output.push(formatted);
+        return formatted;
       });
     }
 
