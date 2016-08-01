@@ -3,7 +3,6 @@ import path from 'path';
 import chalk from 'chalk';
 import table from 'text-table';
 import logSymbols from 'log-symbols';
-import pluralize from 'pluralize';
 
 export default {
   id: 'stylish',
@@ -20,19 +19,20 @@ export default {
   },
 
   endFormat() {
-    const totalViolations = this.totalErrors + this.totalWarnings;
+    const { totalErrors, totalWarnings } = this;
+    const totalViolations = totalErrors + totalWarnings;
     let output = '\n\n';
 
     if (totalViolations === 0) {
       return '\nNo violations';
     }
 
-    if (this.totalErrors > 0) {
-      output += `    ${logSymbols.error}  ${pluralize('error', this.totalErrors, true)}\n`;
+    if (totalErrors > 0) {
+      output += `    ${logSymbols.error}  ${totalErrors} ${totalErrors > 1 ? 'errors' : 'error'}\n`;
     }
 
-    if (this.totalWarnings > 0) {
-      output += `    ${logSymbols.warning}  ${pluralize('warning', this.totalWarnings, true)}\n`;
+    if (totalWarnings > 0) {
+      output += `    ${logSymbols.warning}  ${totalWarnings} ${totalWarnings > 1 ? 'warnings' : 'warning'}\n`;
     }
 
     return output;

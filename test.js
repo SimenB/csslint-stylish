@@ -95,6 +95,26 @@ test('should report errors', t => {
   t.regex(report, /1 error/, 'report contains text');
 });
 
+test('should report multiple warnings', t => {
+  const res = CSSLint.verify('.class {\n  color: red !important;\ntext-size: 12px !important;\n}\n', { important: 1 });
+  const filename = path.resolve('filenamestyle.css');
+  let report = reporter.startFormat() + reporter.formatResults(res, filename) + reporter.endFormat();
+
+  report = chalk.stripColor(report);
+
+  t.regex(report, /2 warnings/, 'report contains text');
+});
+
+test('should report multiple errors', t => {
+  const res = CSSLint.verify('.class {\n  color: red !important;\ntext-size: 12px !important;\n}\n', { important: 2 });
+  const filename = path.resolve('filenamestyle.css');
+  let report = reporter.startFormat() + reporter.formatResults(res, filename) + reporter.endFormat();
+
+  report = chalk.stripColor(report);
+
+  t.regex(report, /2 errors/, 'report contains text');
+});
+
 test('should report rollups correctly', t => {
   const res = CSSLint.verify('.class {\n  float: left;\n  float: left;\n  float: left;\n  float: left;\n  float: left;\n  float: left;' +
     '\n  float: left;\n  float: left;\n  float: left;\n  float: left;\n  float: left;\n}\n', { floats: 2 });
