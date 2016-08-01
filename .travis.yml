@@ -13,7 +13,7 @@ matrix:
 before_install:
   - npm install -g npm
   - npm install -g codeclimate-test-reporter
-script: npm run cover
+script: npm run travis
 addons:
   code_climate:
     repo_token: 949195dc3763437061a310f7966070b6d9598b47ab437eb0eb180cbce5bcc15a

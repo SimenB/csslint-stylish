@@ -48,10 +48,12 @@
     "cover": "nyc ava",
     "lint": "node-version-gte-4 && eslint . || node-version-lt-4",
     "precover": "npm run lint && npm run clean",
-    "postcover": "nyc report -r html -r lcov",
     "prepublish": "not-in-install && npm run compile || echo this is npm install",
     "postpublish": "git push --follow-tags",
     "pretest": "npm run lint",
+    "pretravis": "npm run precover",
+    "travis": "nyc --check-coverage --lines 100 --functions 100 --branches 100 --statements 100 ava",
+    "posttravis": "nyc report -r lcov",
     "test": "ava"
   },
   "ava": {
