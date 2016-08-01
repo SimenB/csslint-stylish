@@ -23,7 +23,7 @@
     "eslint": "^3.1.1",
     "eslint-config-simenb-base": "^2.0.0",
     "in-publish": "^2.0.0",
-    "mocha": "^2.4.5",
+    "mocha": "^3.0.0",
     "node-version-check": "^2.0.2",
     "rimraf": "^2.5.1"
   },
