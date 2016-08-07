@@ -55,8 +55,7 @@ test('should not report undefined output lines when no filename provided', t => 
 
   report = chalk.stripColor(report);
 
-  t.false(/^undefined$/gm.test(report), 'report should not contains undefined text output');
-  // t.notRegex(report, /^undefined$/gm, 'report should not contains undefined text output');
+  t.notRegex(report, /^undefined$/gm, 'report should not contains undefined text output');
 });
 
 test('should report filename provided', t => {
@@ -67,8 +66,7 @@ test('should report filename provided', t => {
 
   report = chalk.stripColor(report);
 
-  // t.notRegex(report, /^undefined$/gm, 'report should not contains undefined text output');
-  t.false(/^undefined$/gm.test(report), 'report should not contains undefined text output');
+  t.notRegex(report, /^undefined$/gm, 'report should not contains undefined text output');
   t.true(report.split('\n')[1] === filename, 'filename should be in output lines');
 });
 
@@ -123,8 +121,8 @@ test('should report rollups correctly', t => {
 
   report = chalk.stripColor(report);
 
-  t.false(/line /.test(report), 'report does not contains text');
-  t.false(/char /.test(report), 'report does not contains text');
+  t.notRegex(report, /line /, 'report does not contains text');
+  t.notRegex(report, /char /, 'report does not contains text');
   t.regex(report, /Too many floats \(11\), you're probably using them for layout. Consider using a grid system instead\./,
     'report contains text');
   t.regex(report, /1 warning/, 'report contains text');
