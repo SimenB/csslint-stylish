@@ -18,10 +18,10 @@ test('should report stuff', t => {
   const filename = report.split('\n')[1];
 
   t.true(filename === 'style.css', 'filename is correct');
-  t.regex(report, /line 2/, 'report contains text');
-  t.regex(report, /char 3/, 'report contains text');
-  t.regex(report, /Use of !important/, 'report contains text');
-  t.regex(report, /1 warning/, 'report contains text');
+  t.true(/line 2/.test(report), 'report contains text');
+  t.true(/char 3/.test(report), 'report contains text');
+  t.true(/Use of !important/.test(report), 'report contains text');
+  t.true(/1 warning/.test(report), 'report contains text');
 });
 
 test('should report with full path', t => {
@@ -35,13 +35,13 @@ test('should report with full path', t => {
   const filename = report.split('\n')[1];
 
   t.true(filename === path.join(__dirname, 'style.css'), 'filename is correct');
-  t.regex(report, /char 3/, 'report contains text');
-  t.regex(report, /Use of !important/, 'report contains text');
-  t.regex(report, /1 warning/, 'report contains text');
+  t.true(/char 3/.test(report), 'report contains text');
+  t.true(/Use of !important/.test(report), 'report contains text');
+  t.true(/1 warning/.test(report), 'report contains text');
 });
 
 test('should be able to be registered as formatter', t => {
-  t.false(CSSLint.hasFormat('stylish'), 'csslint should not be stylish');
+  t.true(!CSSLint.hasFormat('stylish'), 'csslint should not be stylish');
 
   CSSLint.addFormatter(reporter);
 
@@ -55,7 +55,7 @@ test('should not report undefined output lines when no filename provided', t => 
 
   report = chalk.stripColor(report);
 
-  t.notRegex(report, /^undefined$/gm, 'report should not contains undefined text output');
+  t.true(!/^undefined$/gm.test(report), 'report should not contains undefined text output');
 });
 
 test('should report filename provided', t => {
@@ -66,7 +66,7 @@ test('should report filename provided', t => {
 
   report = chalk.stripColor(report);
 
-  t.notRegex(report, /^undefined$/gm, 'report should not contains undefined text output');
+  t.true(!/^undefined$/gm.test(report), 'report should not contains undefined text output');
   t.true(report.split('\n')[1] === filename, 'filename should be in output lines');
 });
 
@@ -87,10 +87,10 @@ test('should report errors', t => {
 
   report = chalk.stripColor(report);
 
-  t.regex(report, /line 2/, 'report contains text');
-  t.regex(report, /char 3/, 'report contains text');
-  t.regex(report, /Use of !important/, 'report contains text');
-  t.regex(report, /1 error/, 'report contains text');
+  t.true(/line 2/.test(report), 'report contains text');
+  t.true(/char 3/.test(report), 'report contains text');
+  t.true(/Use of !important/.test(report), 'report contains text');
+  t.true(/1 error/.test(report), 'report contains text');
 });
 
 test('should report multiple warnings', t => {
@@ -100,7 +100,7 @@ test('should report multiple warnings', t => {
 
   report = chalk.stripColor(report);
 
-  t.regex(report, /2 warnings/, 'report contains text');
+  t.true(/2 warnings/.test(report), 'report contains text');
 });
 
 test('should report multiple errors', t => {
@@ -110,7 +110,7 @@ test('should report multiple errors', t => {
 
   report = chalk.stripColor(report);
 
-  t.regex(report, /2 errors/, 'report contains text');
+  t.true(/2 errors/.test(report), 'report contains text');
 });
 
 test('should report rollups correctly', t => {
@@ -121,9 +121,9 @@ test('should report rollups correctly', t => {
 
   report = chalk.stripColor(report);
 
-  t.notRegex(report, /line /, 'report does not contains text');
-  t.notRegex(report, /char /, 'report does not contains text');
-  t.regex(report, /Too many floats \(11\), you're probably using them for layout. Consider using a grid system instead\./,
+  t.true(!/line /.test(report), 'report does not contains text');
+  t.true(!/char /.test(report), 'report does not contains text');
+  t.true(/Too many floats \(11\), you're probably using them for layout. Consider using a grid system instead\./.test(report),
     'report contains text');
-  t.regex(report, /1 warning/, 'report contains text');
+  t.true(/1 warning/.test(report), 'report contains text');
 });
