@@ -24,7 +24,7 @@
     "eslint-config-simenb-base": "^2.0.0",
     "in-publish": "^2.0.0",
     "node-version-check": "^2.1.0",
-    "nyc": "^7.1.0",
+    "nyc": "^8.1.0",
     "rimraf": "^2.5.4"
   },
   "files": [
