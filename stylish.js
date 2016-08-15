@@ -71,7 +71,7 @@ export default {
           formatted.push(chalk.gray(`char ${col}`));
         }
 
-        formatted.push(isWarning ? chalk.blue(message) : chalk.red(message));
+        formatted.push(isWarning ? chalk.yellow(message) : chalk.red(message));
 
         return formatted;
       });
