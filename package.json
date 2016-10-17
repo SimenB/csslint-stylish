@@ -20,7 +20,7 @@
     "coveralls": "^2.11.12",
     "csslint": "^1.0.2",
     "eslint": "^3.5.0",
-    "eslint-config-simenb-ava": "^3.0.0",
+    "eslint-config-simenb-ava": "^5.0.0",
     "eslint-config-simenb-base": "^5.0.0",
     "in-publish": "^2.0.0",
     "node-version-check": "^2.1.0",
