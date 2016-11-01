@@ -41,6 +41,9 @@
   "license": "MIT",
   "main": "index.js",
   "repository": "SimenB/csslint-stylish",
+  "engines": {
+    "node": ">=4"
+  },
   "scripts": {
     "clean": "rimraf coverage/ .nyc_output/ index.js",
     "compile": "babel stylish.js -o index.js",
