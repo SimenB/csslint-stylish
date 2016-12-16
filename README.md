@@ -82,7 +82,7 @@ If `true`, will print the absolute path of the file linted, instead of the relat
 
 
 [travis-url]: https://travis-ci.org/SimenB/csslint-stylish
-[travis-image]: https://img.shields.io/travis/SimenB/csslint-stylish.svg
+[travis-image]: https://img.shields.io/travis/SimenB/csslint-stylish/master.svg
 [appveyor-url]: https://ci.appveyor.com/project/SimenB/csslint-stylish
 [appveyor-image]: https://ci.appveyor.com/api/projects/status/92exg416gkm4al9r?svg=true
 [coveralls-url]: https://coveralls.io/github/SimenB/csslint-stylish
