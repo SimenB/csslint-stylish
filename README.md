@@ -10,6 +10,7 @@
 [![bitHound Dependencies][bithound-image]][bithound-url]
 [![Dependency status][david-image]][david-url]
 [![Dev Dependency Status][david-dev-image]][david-dev-url]
+[![Greenkeeper badge][greenkeeper-image]][greenkeeper-url]
 
 ## Screenshots
 ![This reporter][new-image]
@@ -99,3 +100,5 @@ If `true`, will print the absolute path of the file linted, instead of the relat
 [david-dev-image]: https://img.shields.io/david/dev/SimenB/csslint-stylish.svg
 [new-image]: screenshots/this.png
 [orig-image]: screenshots/original.png
+[greenkeeper-image]: https://badges.greenkeeper.io/SimenB/csslint-stylish.svg
+[greenkeeper-url]: https://greenkeeper.io/
