@@ -25,13 +25,13 @@ vs original:
 To use it with the `csslint` api, you will have to call `csslint`, as well as assemble the report, manually.
 
 ```js
-var csslint = require('csslint');
+var csslint = require('csslint').CSSLint;
 var csslintStylish = require('csslint-stylish');
 
 var report = csslint.verify(/* css as string here */);
 
 // Format the report stylishly
-var stylishReport = csslintStylish.startFormat() + csslintStylish.formatResult(report) + csslintStylish.endFormat();
+var stylishReport = csslintStylish.startFormat() + csslintStylish.formatResults(report) + csslintStylish.endFormat();
 
 // Then write it to the console
 console.log(stylishReport);
@@ -54,7 +54,7 @@ See the [example](https://github.com/gruntjs/grunt-contrib-csslint#providing-a-c
 
 ## API
 
-### csslintStylish.formatResult(report, filename, options)
+### csslintStylish.formatResults(report, filename, options)
 
 #### report
 Type: `Object`
