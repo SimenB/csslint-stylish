@@ -26,8 +26,9 @@ test('should report stuff', () => {
 test('should report with full path', () => {
   const res = CSSLint.verify('.class {\n  color: red !important\n}\n');
 
-  let report = reporter.startFormat() + reporter.formatResults(res, path.resolve('style.css'),
-      { absoluteFilePathsForFormatters: true }) + reporter.endFormat();
+  let report = reporter.startFormat() +
+    reporter.formatResults(res, path.resolve('style.css'), { absoluteFilePathsForFormatters: true }) +
+    reporter.endFormat();
 
   report = chalk.stripColor(report);
 
@@ -60,7 +61,8 @@ test('should not report undefined output lines when no filename provided', () =>
 test('should report filename provided', () => {
   const res = CSSLint.verify('.class {\n  color: red !important\n}\n');
   const filename = path.resolve('filenamestyle.css');
-  let report = reporter.startFormat() + reporter.formatResults(res, filename, { absoluteFilePathsForFormatters: true }) +
+  let report = reporter.startFormat() +
+    reporter.formatResults(res, filename, { absoluteFilePathsForFormatters: true }) +
     reporter.endFormat();
 
   report = chalk.stripColor(report);
@@ -113,8 +115,11 @@ test('should report multiple errors', () => {
 });
 
 test('should report rollups correctly', () => {
-  const res = CSSLint.verify('.class {\n  float: left;\n  float: left;\n  float: left;\n  float: left;\n  float: left;\n  float: left;' +
-    '\n  float: left;\n  float: left;\n  float: left;\n  float: left;\n  float: left;\n}\n', { floats: 2 });
+  const res = CSSLint.verify(
+    '.class {\n  float: left;\n  float: left;\n  float: left;\n  float: left;\n  float: left;\n  float: left;' +
+      '\n  float: left;\n  float: left;\n  float: left;\n  float: left;\n  float: left;\n}\n',
+    { floats: 2 }
+  );
   const filename = path.resolve('filenamestyle.css');
   let report = reporter.startFormat() + reporter.formatResults(res, filename) + reporter.endFormat();
 
