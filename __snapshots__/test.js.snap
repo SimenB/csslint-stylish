@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should not report undefined output lines when no filename provided 1`] = `
+"
+  line 2  char 3  Use of !important
+
+    ⚠  1 warning
+"
+`;
+
+exports[`should report errors 1`] = `
+"
+filenamestyle.css
+  line 2  char 3  Use of !important
+
+    ✖  1 error
+"
+`;
+
+exports[`should report filename provided 1`] = `
+"
+/Users/simen/Development/csslint-stylish/filenamestyle.css
+  line 2  char 3  Use of !important
+
+    ⚠  1 warning
+"
+`;
+
+exports[`should report multiple errors 1`] = `
+"
+filenamestyle.css
+  line 2  char 3  Use of !important
+  line 3  char 1  Use of !important
+
+    ✖  2 errors
+"
+`;
+
+exports[`should report multiple warnings 1`] = `
+"
+filenamestyle.css
+  line 2  char 3  Use of !important
+  line 3  char 1  Use of !important
+
+    ⚠  2 warnings
+"
+`;
+
+exports[`should report no violations if there are none 1`] = `
+"
+
+No violations"
+`;
+
+exports[`should report rollups correctly 1`] = `
+"
+filenamestyle.css
+      Too many floats (11), you're probably using them for layout. Consider using a grid system instead.
+
+    ⚠  1 warning
+"
+`;
+
+exports[`should report stuff 1`] = `
+"
+style.css
+  line 2  char 3  Use of !important
+
+    ⚠  1 warning
+"
+`;
+
+exports[`should report with full path 1`] = `
+"
+/Users/simen/Development/csslint-stylish/style.css
+  line 2  char 3  Use of !important
+
+    ⚠  1 warning
+"
+`;
