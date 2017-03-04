@@ -127,6 +127,8 @@ test('should report rollups correctly', () => {
 
   expect(report).not.toMatch(/line /);
   expect(report).not.toMatch(/char /);
-  expect(report).toMatch(/Too many floats \(11\), you're probably using them for layout. Consider using a grid system instead\./);
+  expect(report).toMatch(
+    /Too many floats \(11\), you're probably using them for layout. Consider using a grid system instead\./
+  );
   expect(report).toMatch(/1 warning/);
 });
