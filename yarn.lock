@@ -1193,9 +1193,9 @@ eslint-config-prettier@^1.4.1:
   dependencies:
     get-stdin "^5.0.1"
 
-eslint-config-simenb-base@^11.0.1:
-  version "11.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-simenb-base/-/eslint-config-simenb-base-11.0.1.tgz#ce0590e2a939833560c161f2b96c236bd6b6cbf9"
+eslint-config-simenb-base@^12.0.0:
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-simenb-base/-/eslint-config-simenb-base-12.0.0.tgz#8356bc9579c0957ff118127c32ba561abf81d00a"
   dependencies:
     eslint-config-airbnb-base "^11.1.0"
     eslint-config-prettier "^1.4.1"
