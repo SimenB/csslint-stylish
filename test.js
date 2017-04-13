@@ -26,7 +26,8 @@ test('should report stuff', () => {
 test('should report with full path', () => {
   const res = CSSLint.verify('.class {\n  color: red !important\n}\n');
 
-  let report = reporter.startFormat() +
+  let report =
+    reporter.startFormat() +
     reporter.formatResults(res, path.resolve('style.css'), { absoluteFilePathsForFormatters: true }) +
     reporter.endFormat();
 
@@ -61,7 +62,8 @@ test('should not report undefined output lines when no filename provided', () =>
 test('should report filename provided', () => {
   const res = CSSLint.verify('.class {\n  color: red !important\n}\n');
   const filename = path.resolve('filenamestyle.css');
-  let report = reporter.startFormat() +
+  let report =
+    reporter.startFormat() +
     reporter.formatResults(res, filename, { absoluteFilePathsForFormatters: true }) +
     reporter.endFormat();
 
