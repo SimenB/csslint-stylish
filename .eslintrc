@@ -1,3 +1,6 @@
 {
-  "extends": "simenb-base"
+  "extends": [
+    "simenb-base",
+    "simenb-jest"
+  ]
 }
