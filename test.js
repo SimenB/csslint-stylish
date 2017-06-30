@@ -1,7 +1,7 @@
 /* eslint-env jest */
 
 import { CSSLint } from 'csslint';
-import chalk from 'chalk';
+import stripAnsi from 'strip-ansi';
 
 import path from 'path';
 
@@ -12,7 +12,7 @@ test('should report stuff', () => {
 
   let report = reporter.startFormat() + reporter.formatResults(res, path.resolve('style.css')) + reporter.endFormat();
 
-  report = chalk.stripColor(report);
+  report = stripAnsi(report);
 
   const filename = report.split('\n')[1];
 
@@ -31,7 +31,7 @@ test('should report with full path', () => {
     reporter.formatResults(res, path.resolve('style.css'), { absoluteFilePathsForFormatters: true }) +
     reporter.endFormat();
 
-  report = chalk.stripColor(report);
+  report = stripAnsi(report);
 
   const filename = report.split('\n')[1];
 
@@ -54,7 +54,7 @@ test('should not report undefined output lines when no filename provided', () =>
 
   let report = reporter.startFormat() + reporter.formatResults(res) + reporter.endFormat();
 
-  report = chalk.stripColor(report);
+  report = stripAnsi(report);
 
   expect(report).not.toMatch(/^undefined$/gm);
 });
@@ -67,7 +67,7 @@ test('should report filename provided', () => {
     reporter.formatResults(res, filename, { absoluteFilePathsForFormatters: true }) +
     reporter.endFormat();
 
-  report = chalk.stripColor(report);
+  report = stripAnsi(report);
 
   expect(report).not.toMatch(/^undefined$/gm);
   expect(report.split('\n')[1]).toEqual(filename, 'filename should be in output lines');
@@ -78,7 +78,7 @@ test('should report no violations if there are none', () => {
   const filename = path.resolve('filenamestyle.css');
   let report = reporter.startFormat() + reporter.formatResults(res, filename) + reporter.endFormat();
 
-  report = chalk.stripColor(report);
+  report = stripAnsi(report);
 
   expect(report.trim()).toEqual('No violations');
 });
@@ -88,7 +88,7 @@ test('should report errors', () => {
   const filename = path.resolve('filenamestyle.css');
   let report = reporter.startFormat() + reporter.formatResults(res, filename) + reporter.endFormat();
 
-  report = chalk.stripColor(report);
+  report = stripAnsi(report);
 
   expect(report).toMatch(/line 2/);
   expect(report).toMatch(/char 3/);
@@ -101,7 +101,7 @@ test('should report multiple warnings', () => {
   const filename = path.resolve('filenamestyle.css');
   let report = reporter.startFormat() + reporter.formatResults(res, filename) + reporter.endFormat();
 
-  report = chalk.stripColor(report);
+  report = stripAnsi(report);
 
   expect(report).toMatch(/2 warnings/);
 });
@@ -111,7 +111,7 @@ test('should report multiple errors', () => {
   const filename = path.resolve('filenamestyle.css');
   let report = reporter.startFormat() + reporter.formatResults(res, filename) + reporter.endFormat();
 
-  report = chalk.stripColor(report);
+  report = stripAnsi(report);
 
   expect(report).toMatch(/2 errors/);
 });
@@ -125,7 +125,7 @@ test('should report rollups correctly', () => {
   const filename = path.resolve('filenamestyle.css');
   let report = reporter.startFormat() + reporter.formatResults(res, filename) + reporter.endFormat();
 
-  report = chalk.stripColor(report);
+  report = stripAnsi(report);
 
   expect(report).not.toMatch(/line /);
   expect(report).not.toMatch(/char /);
