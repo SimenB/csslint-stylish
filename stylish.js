@@ -28,17 +28,25 @@ export default {
     }
 
     if (totalErrors > 0) {
-      output += `    ${logSymbols.error}  ${totalErrors} ${totalErrors > 1 ? 'errors' : 'error'}\n`;
+      output += `    ${logSymbols.error}  ${totalErrors} ${totalErrors > 1
+        ? 'errors'
+        : 'error'}\n`;
     }
 
     if (totalWarnings > 0) {
-      output += `    ${logSymbols.warning}  ${totalWarnings} ${totalWarnings > 1 ? 'warnings' : 'warning'}\n`;
+      output += `    ${logSymbols.warning}  ${totalWarnings} ${totalWarnings > 1
+        ? 'warnings'
+        : 'warning'}\n`;
     }
 
     return output;
   },
 
-  formatResults({ messages }, filename, { absoluteFilePathsForFormatters } = {}) {
+  formatResults(
+    { messages },
+    filename,
+    { absoluteFilePathsForFormatters } = {}
+  ) {
     let output = [];
     let underlinedFilename;
 
