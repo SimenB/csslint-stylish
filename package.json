@@ -7,7 +7,7 @@
     "url": "https://github.com/SimenB/csslint-stylish/issues"
   },
   "dependencies": {
-    "chalk": "^2.0.1",
+    "chalk": "^3.0.0",
     "log-symbols": "^2.0.0",
     "text-table": "^0.2.0"
   },
