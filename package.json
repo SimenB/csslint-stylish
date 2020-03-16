@@ -23,7 +23,7 @@
     "eslint": "^4.3.0",
     "eslint-config-simenb-base": "^14.0.0",
     "eslint-config-simenb-jest": "^2.0.0",
-    "in-publish": "^2.0.0",
+    "in-publish": "^2.0.1",
     "jest": "^22.0.5",
     "prettier": "^1.10.2",
     "strip-ansi": "^4.0.0"
